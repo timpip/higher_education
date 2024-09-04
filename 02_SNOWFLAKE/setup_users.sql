@@ -1,0 +1,17 @@
+USE ROLE USERADMIN;
+
+CREATE USER IF NOT EXISTS ali_b
+    PASSWORD = 'ali_b_123'
+    DEFAULT_WAREHOUSE = he_wh;
+
+CREATE USER IF NOT EXISTS viji_p
+    PASSWORD = 'viji_p_123'
+    DEFAULT_WAREHOUSE = he_wh;
+    
+CREATE USER IF NOT EXISTS wuttichai_c
+    PASSWORD = 'wuttichai_c_123'
+    DEFAULT_WAREHOUSE = he_wh;
+
+CREATE USER IF NOT EXISTS tim_t
+    PASSWORD = 'tim_t_123'
+    DEFAULT_WAREHOUSE = he_wh;
