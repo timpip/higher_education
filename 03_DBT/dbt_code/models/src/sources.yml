@@ -1,0 +1,7 @@
+sources:
+    - name: he_db
+      schema: staging
+      tables: 
+        - name: stg_data_ads
+          identifier: data_field_job_ads
+    
