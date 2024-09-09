@@ -7,9 +7,10 @@
 
 WITH stg_he AS (SELECT * FROM {{ source('he_db', 'stg_data_ads') }})
 
-SELECT 
+SELECT
     id,
-    NUMBER_OF_VACANCIES AS vacancies,
-    relevance
-    
+    application_deadline,
+    publication_date,
+    last_publication_date
+
 FROM stg_he
