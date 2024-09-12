@@ -15,3 +15,6 @@ CREATE USER IF NOT EXISTS wuttichai_c
 CREATE USER IF NOT EXISTS tim_t
     PASSWORD = 'tim_t_123'
     DEFAULT_WAREHOUSE = he_wh;
+
+
+ 

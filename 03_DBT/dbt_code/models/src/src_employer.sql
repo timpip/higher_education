@@ -18,4 +18,4 @@ SELECT
     WORKPLACE_ADDRESS__MUNICIPALITY as workplace_city,
     WORKPLACE_ADDRESS__COUNTRY AS workplace_country
 
-FROM stg_he;
+FROM stg_he
