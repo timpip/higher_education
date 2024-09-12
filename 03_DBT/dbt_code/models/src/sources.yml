@@ -6,4 +6,5 @@ sources:
           identifier: data_field_job_ads
         - name: stg_data_ads_must
           identifier: data_field_job_ads__must_have__work_experiences
+      
     
