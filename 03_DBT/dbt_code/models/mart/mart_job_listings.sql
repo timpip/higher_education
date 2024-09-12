@@ -1,6 +1,5 @@
 WITH fct_job_ads AS (
-    SELECT * FROM {{ ref('fct_job_ads') }}
-),
+    SELECT * FROM {{ ref('fct_job_ads') }}),
 
 job_details AS (SELECT * FROM {{ ref('dim_job_details') }}),
 
@@ -34,4 +33,4 @@ LEFT JOIN employer
 LEFT JOIN aux_attributes
     ON fct_job_ads.aux_key = aux_attributes.aux_id
 LEFT JOIN date
-    ON fct_job_ads.date_key = dates.date_id
+    ON fct_job_ads.date_key = date.date_id
