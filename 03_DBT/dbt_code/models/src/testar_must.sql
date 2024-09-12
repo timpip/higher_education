@@ -1,4 +1,4 @@
-{{
+{# {{
   config(
     materialized = 'ephemeral',
     )
@@ -11,4 +11,4 @@ SELECT
     id,
     headline
 
-FROM stg_data_ads
+FROM stg_data_ads #}

@@ -7,7 +7,6 @@ SELECT
     employer_organization_number,
     workplace_street_adress,
     workplace_region,
-    workplace_region_code AS worplace_postcode,
-    workplace_city,
+    workplace_region_code AS workplace_postcode,
     workplace_country AS country
 FROM employer

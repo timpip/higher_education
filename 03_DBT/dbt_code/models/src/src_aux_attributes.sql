@@ -11,5 +11,5 @@ SELECT -- id ska först, hittar inte just nu
     id,
     EXPERIENCE_REQUIRED as experience_required,
     DRIVING_LICENSE_REQUIRED as driver_license,
-    ACCESS_TO_OWN_CAR as ACCESS_TO_CAR
+    ACCESS_TO_OWN_CAR as access_to_own_car
 FROM stg_he

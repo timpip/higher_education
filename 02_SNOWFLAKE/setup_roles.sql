@@ -19,6 +19,7 @@ GRANT USAGE ON DATABASE he_db TO ROLE he_analyst_role;
 
 GRANT CREATE VIEW ON SCHEMA he_db.mart TO ROLE he_dbt_role;
 GRANT CREATE VIEW ON SCHEMA he_db.warehouse TO ROLE he_dbt_role;
+GRANT CREATE VIEW ON SCHEMA he_db.stagin TO ROLE he_dbt_role;
 
 
 GRANT USAGE ON ALL SCHEMAS IN DATABASE he_db TO ROLE he_dlt_role;
@@ -127,7 +128,7 @@ GRANT MODIFY ON SCHEMA he_db.mart TO ROLE he_dbt_role;
 
 -- GRANT OWNERSHIP ON SCHEMA he_db.warehouse TO ROLE he_dbt_role;
 
-
+USE ROLE SECURITYADMIN;
 -----------------------------------------------------------------------------------------------------
 
 -- Grant usage on the database and schema
@@ -156,3 +157,6 @@ GRANT USAGE ON WAREHOUSE he_wh TO ROLE he_dbt_role;
 
 -- Optional: Allow the role to suspend or resume the warehouse
 GRANT OPERATE ON WAREHOUSE he_wh TO ROLE he_dbt_role;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA he_db.staging TO ROLE he_dbt_role;
+

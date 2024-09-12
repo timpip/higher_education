@@ -5,7 +5,7 @@ WITH src_job_details AS (SELECT * FROM {{ ref('src_dim_job_details') }})
 SELECT
     {{ dbt_utils.generate_surrogate_key(['id','headline']) }} AS job_details_id, 
     headline,
-    description,
+    job_description,
     description_html_formatted,
     employment_type,
     duration,
