@@ -1,0 +1,3 @@
+cd /Users/pete/Desktop/Higher_education/dashboard_steamlit/
+ls
+streamlit run streamlit.py
