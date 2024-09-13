@@ -19,7 +19,7 @@ GRANT USAGE ON DATABASE he_db TO ROLE he_analyst_role;
 
 GRANT CREATE VIEW ON SCHEMA he_db.mart TO ROLE he_dbt_role;
 GRANT CREATE VIEW ON SCHEMA he_db.warehouse TO ROLE he_dbt_role;
-GRANT CREATE VIEW ON SCHEMA he_db.stagin TO ROLE he_dbt_role;
+GRANT CREATE VIEW ON SCHEMA he_db.staging TO ROLE he_dbt_role;
 
 
 GRANT USAGE ON ALL SCHEMAS IN DATABASE he_db TO ROLE he_dlt_role;
@@ -95,6 +95,7 @@ GRANT CREATE TABLE ON SCHEMA he_db.mart TO ROLE he_dbt_role;
 GRANT ROLE he_dlt_role TO ROLE he_dbt_role;
 
 GRANT ROLE he_dlt_role TO USER viji_p;
+GRANT ROLE he_dbt_role TO USER viji_p;
 GRANT ROLE he_dbt_role TO USER ali_b;
 GRANT ROLE he_analyst_role TO USER wuttichai_c;
 
