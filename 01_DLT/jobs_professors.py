@@ -86,10 +86,11 @@ if __name__ == "__main__":
     queries = [
                 "Doktorander",
                 "Högskolelektor", 
-                "Yrkeslärare", 
+                "Forskarassistenter", 
                 "Universitetslektor",
-                "Gymnasielärare",
-                "Studie- och yrkesvägledare"
+                "gymnasiet",
+                "Studie- och yrkesvägledare",
+                "Gymnasieskola"
                 ]
     table_name = "data_field_job_ads"
 

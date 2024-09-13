@@ -34,4 +34,4 @@ LEFT JOIN employer
 LEFT JOIN aux_attributes
     ON fct_job_ads.aux_key = aux_attributes.aux_id
 LEFT JOIN date
-    ON fct_job_ads.date_key = dates.date_id
+    ON fct_job_ads.date_key = date.date_id
