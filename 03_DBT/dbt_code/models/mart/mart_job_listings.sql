@@ -1,6 +1,5 @@
 WITH fct_job_ads AS (
-    SELECT * FROM {{ ref('fct_job_ads') }}
-),
+    SELECT * FROM {{ ref('fct_job_ads') }}),
 
 job_details AS (SELECT * FROM {{ ref('dim_job_details') }}),
 
