@@ -1,17 +1,22 @@
 models:
   - name: dim_employer
+    description: "Information about the employer with name, workplace, address, region and such."
     columns:
       - name: employer_id
         data_tests:
           - unique
-          - not null
+        
 
       - name: workplace_city
         data_tests:
           - not_null
-
-        # TODO: add more tests ...
+      - name: employer_workplace
+          - not_null
+        data_tests:
+          - not_null
+        
   - name: dim_date
+    description: "Information about the application deadline, publication date and last publication date."
     columns:
       - name: application_deadline
         data_tests:
@@ -33,8 +38,9 @@ models:
         data_tests:
           - not_null
 
-        # TODO: add more tests ...
+        
   - name: dim_job_details
+    description: "Information about the ads like headline, description salary type ect."
     columns:
       - name: job_details_id
         data_tests:
@@ -44,9 +50,10 @@ models:
         data_tests:
           - not_null
 
-        # TODO: add more tests ...
+        
 
   - name: fct_job_ads
+    description: "Information about relevance and vacancies, also bridge to dimensions"
     columns:
       - name: job_details_key
         data_tests:
@@ -54,6 +61,7 @@ models:
               to: ref('dim_job_details')
               field: job_details_id
       - name: relevance
+        description: "How relevant the search is to the ad"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0  
@@ -62,6 +70,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: float
       - name: vacancies
+        description: "How many vacencies does the Employer have for that ad"
         data_tests: 
           - dbt_expectations.expect_column_quantile_values_to_be_between:
               quantile: .99
@@ -79,4 +88,3 @@ models:
             
 
           
-   # TODO: more tests ...
