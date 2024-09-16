@@ -9,18 +9,16 @@ aux_attributes AS (SELECT * FROM {{ ref('src_aux_attributes') }}),
 date AS (SELECT * FROM {{ ref('src_dim_date') }})
 
 SELECT 
-    {{dbt_utils.generate_surrogate_key(['job_ads.id', 'job_details.headline'])}} as job_details_key,
+    {{dbt_utils.generate_surrogate_key(['job_details.id', 'job_details.headline'])}} as job_details_key,
     {{dbt_utils.generate_surrogate_key(['employer.id', 'employer.employer_name'])}} as employer_key,
     {{dbt_utils.generate_surrogate_key(['date.application_deadline', 'date.id'])}} as date_key,
     {{dbt_utils.generate_surrogate_key(['aux_attributes.id', 'aux_attributes.experience_required'])}} as aux_key,
-    
+    job_details.id,
     relevance,
     coalesce(vacancies, 1) as vacancies,
     application_deadline,
-    -- verifiera att joinen fungerar
-    job_details.id,
-    employer.workplace_city,
-    employer.employer_name,
+    
+    
     
 FROM 
     job_ads 
