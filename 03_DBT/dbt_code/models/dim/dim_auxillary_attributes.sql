@@ -6,5 +6,5 @@ SELECT
     {{ dbt_utils.generate_surrogate_key(['id','EXPERIENCE_REQUIRED']) }} AS aux_id, 
     experience_required,
     driver_license,
-    access_to_own_car,
+    ACCESS_TO_OWN_CAR
 FROM src_aux_attributes

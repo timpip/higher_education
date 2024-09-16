@@ -1,0 +1,78 @@
+dbt dokumentation/guide
+
+1. Installation och initiering
+    Här så ska vi köra
+    pip install dbt-snowflake
+    Vi ska börja med att installera en snowflake extension för att kunna upprätta en koppling mellan vscode i detta fall och Snowflake. 
+    Sedan ska vi initiera ett nytt dbt projekt genom att köra
+    dbt init dbt_code, detta skapar en standardstrukturerad mapp med filer som behövs för att börja starta din projekt. 
+
+2. Konfiguerera dbt-profilen.
+    Här redigerar vi .dbt/profiles.yml för att där i fylla in Snowflake uppgifter såsom URL, Username, password m.m..
+    I profiles.yml så definerar du hur dbt ska ansluta till din snowflake databas. Med denna uppkoppling så ger du dbt möjligheten till att
+    autentisera och köra SQL-frågor mot din databas i Snowflake. 
+
+3. Verifiera konfiguerationen.
+    En verifiering av konfiguerationen kan göras genom att köra dbt debug.
+    Syftet med detta är att säkerställa att din profiles.yml fil är korrekt konfiguerad för att dbt skall kunna ansluta till databasen. 
+    Med en dbt debug så kan du även identifera eventuella anslutningsproblem för att kunna göra en felsökning vid uppkopplingsproblem. 
+
+4. Inställningar för Visual Studio Code.
+    Här börjar vi med att installera en dbt extension 'dbt Power User' och ändra på settings.json där vi lägger till 
+            "files.associations": {
+        ".sql": "jinja-sql",
+        ".yml": "jinja-yaml"
+        }
+    Med dessa inställningar förbättrar vi kodningen och användandet inom VS code genom att vi lägger till syntaxmarkeringar för dbts specifika filer.
+    Detta gör SQL och YAML filer lättare att läsa och förstå. 
+
+5. Dbt-package.
+    Vi ska lägga till dbt_utils paketet i filen packages.yml 
+    packages:
+        
+      -  package: dbt-labs/dbt_utils
+         version: 1.2.0
+
+    och därefter kör vi 'dbt deps' i terminalen för att initiera installationen av paktetet. 
+    Syftet med dbt_utils är att paketet erbjuder hjälpfunktion som gör det enklare för att oss att skriva modeller.
+    Med denna installation får vi tillgång till ett antal verktyg som förenklar vårt dbt arbete/projekt.
+
+6. Skapa mappstrukturen. 
+    Genom att köra' mkdir src fct dim mart ' i terminalen så skapar vi dessa 4 filer src fct dim mart. 
+    Detta är för att skapa en organiserad mappstruktur för att hålla respektive SQL fil i repsketive mapp.
+    Med denna struktur underlättar vi kodunderhållen och gör det enklare för t.ex. teammedlemmar att navigera sig i projektet. 
+
+7. Skapa och konfiguera schema.yml 
+
+    Genom att skapa en schema.yml fil i models så kan vi testa våra modeller. Här så kan vi upprätta en kvalitetskontroll eller krav 
+    för att säkerställa att vår data uppfyller kvalitetskraven. 
+
+8. Konfiguera sources.yml
+    Genom att vi skapar en sources.yml i src mappen så kan vi därefter konfiguera en uppkoppling för vart dbt ska hämta sin rådata ifrån. 
+    I denna fil så namnger vi databasen och vilken schema dbt ska eftersöka rådatan i. 
+
+9. Lägg till dbt_expectations
+    I package ska vi även lägga till dbt_expectations 
+    packages:
+        
+        - package: calogica/dbt_expectations
+          version: 0.10.3
+    och därefter kör vi 'dbt deps' i terminalen. 
+
+    Syftet med dbt_expectations är att denna paket testar din data automatiskt för att upptäcka problem. 
+    Med denna paket så får du en bra hjälpemedel för att säkerställa datakvaliteten genom att autoamtiskt validera data gentemot kraven. 
+
+10. Oraganisera SQL-filer i mapparna.
+    Nu när vi ska börja skapa SQL filer så är det viktigt att veta vart respektive SQL fil ska ligga. 
+    SRC: Rådata från datakällor. 
+    DIM: Dimensionstabeller som ger kontext.
+    FCT: Faktatabeller som innehåller nyckelmått. 
+    MART: Aggregerad data för specifika analyser. 
+
+    Syftet med detta är för att projektet blir mer organiserad, strukturerad och lättare att förstå. 
+    Varje mapp har ett specifikt syfte detta gör det enklare att förstå dess syfte och struktur. 
+
+11. Kör dbt-modellerna. 
+    Nu är det dags för oss att köra dbt run som kör alla modeller och skapar tabeller i din databas.
+    Därefter kör vi dbt test för att körde de tester som vi definerat i schema.yml för att säkerställa att
+    vår data uppfyller kvalitetskraven. Detta steg är viktigt för att verifera att våra modeller fungerar, är korrekta och att datan är pålitlig. 
