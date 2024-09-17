@@ -4,11 +4,6 @@ import streamlit as st
 import pandas as pd
 from snowflake.connector import connect  
 
-
-
-
-
-
 def query_job_listings(query = "SELECT * FROM mart_job_listings"):
     load_dotenv()
     try:
@@ -51,4 +46,3 @@ print(query_job_listings())
 
 # except Exception as e:
 #     st.error(f"Ett oväntat fel uppstod: {e}")
-
